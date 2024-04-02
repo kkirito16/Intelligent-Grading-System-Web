@@ -20,5 +20,7 @@ yarn build
 yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+管理员账号：admin
+密码：654321
+普通人员账号：people
+密码：123456

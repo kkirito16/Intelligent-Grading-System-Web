@@ -2,7 +2,7 @@
 	<div class="login-wrapper">
 		<div class="modal">
 			<el-form :model="user" status-icon :rules="rules" ref="userForm">
-				<div class="title">动态路由</div>
+				<div class="title">欢迎登录</div>
 				<el-form-item prop="username">
 					<el-input type="text" prefix-icon="el-icon-user" placeholder="请输入用户名" v-model="user.username" />
 				</el-form-item>
@@ -12,14 +12,9 @@
 				<el-form-item>
 					<el-button type="primary" class="btn-login" @click="login">登录</el-button>
 				</el-form-item>
-				<div class="toast">
-					<span>管理员账号：admin </span>
-					<span>密码：654321</span>
-				</div>
-				<div class="toast">
-					<span>普通人员账号：people</span>
-					<span>密码：123456</span>
-				</div>
+				<el-form-item>
+					<el-button type="primary" class="btn-register" @click="register">注册</el-button>
+				</el-form-item>
 			</el-form>
 		</div>
 	</div>
@@ -63,6 +58,9 @@ export default {
 					if(!flag) Message({ type: 'warning', message: "账号密码错误，请重试!", showClose: true, duration: 3000 })
 			    } else return false
 			})
+		},
+		register() {
+
 		}
 	}
 }
@@ -72,17 +70,19 @@ export default {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: center;
-	background-color: #fff;
+	background-color: lightblue;
+	justify-content: flex-end;
 	width: 100vw;
 	height: 100vh;
 }
 .modal {
 	width: 360px;
 	height: 380px;
-	box-shadow: 0 0 10px 5px #ddd;
+	box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+	background-color: #fff;
 	padding: 50px;
 	border-radius: 5px;
+	margin-right: 100px; /* 设置右边距为20px */
 }
 .title {
 	width: 100%;
@@ -93,6 +93,12 @@ export default {
 }
 .btn-login {
 	width: 100%;
+	border-color: rgb(0,0,0,0.1);
+}
+.btn-register{
+	width: 100%;
+	background: #cacdcf;
+	border-color: rgb(0,0,0,0.1);
 }
 .toast{
 	width: 100%;
