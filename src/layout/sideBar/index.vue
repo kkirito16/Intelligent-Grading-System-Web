@@ -1,6 +1,6 @@
 <template>
   <el-menu
-    mode="vertical"
+    mode="horizontal"
     unique-opened
     :default-active="$route.path"
     background-color="#304156"

@@ -5,30 +5,29 @@ import Layout from "../layout"
 Vue.use(VueRouter)
 
 const routes = [
-  { name: "login", path: "/login", meta: { title: "login" }, component: () => import("../views/login/index"), hidden: true },
+  { name: "login", path: "/login", meta: { title: "登录 - 慧阅智能阅卷平台" }, component: () => import("../views/login/index"), hidden: true },
   { name: "/", path: "/", component: Layout, redirect: "/index", hidden: false, children: [
-      { name: "index", path: "/index", meta: { title: "index" }, component: () => import("../views/index/index") },
+      { name: "index", path: "/index", meta: { title: "首页 - 慧阅智能阅卷平台" }, component: () => import("../views/index/index") },
   ]},
-  { name: "/form", path: "/form", component: Layout, redirect: "/form/index", hidden: false, children: [
-      { name: "/form/index", path: "/form/index", meta: { title: "form" }, component: () => import("../views/form/index") }
+  { name: "/grading", path: "/grading", component: Layout, redirect: "/grading/index", hidden: false, children: [
+      { name: "/grading/index", path: "/grading/index", meta: { title: "阅卷 - 慧阅智能阅卷平台" }, component: () => import("../views/grading/index") }
   ]},
-  { name: "/example", path: "/example", component: Layout, redirect: "/example/tree", meta: { title: "example" }, hidden: false, children: [
-	  { name: "/tree", path: "/example/tree", meta: { title: "tree" }, component: () => import("../views/tree/index") },
-	  { name: "/copy", path: "/example/copy", meta: { title: "copy" }, component: () => import("../views/tree/copy") }
-  ] },
-  { name: "/table", path: "/table", component: Layout, redirect: "/table/index", hidden: false, children: [
-	  { name: "/table/index", path: "/table/index", meta: { title: "table" }, component: () => import("../views/table/index") }
-  ] },
-  { name: "/admin", path: "/admin", component: Layout, redirect: "/admin/index", hidden: false, children: [
-	{ name: "/admin/index", path: "/admin/index", meta: { title: "admin" }, component: () => import("../views/admin/index") }
-] },
-{ name: "/people", path: "/people", component: Layout, redirect: "/people/index", hidden: false, children: [
-	{ name: "/people/index", path: "/people/index", meta: { title: "people" }, component: () => import("../views/people/index") }
-] }
+  { name: "/analysis", path: "/analysis", component: Layout, redirect: "/analysis/index", hidden: false, children: [
+      { name: "/analysis/index", path: "/analysis/index", meta: { title: "数据分析 - 慧阅智能阅卷平台" }, component: () => import("../views/analysis/index") }
+  ] }
 ]
+
+const originalPush = VueRouter.prototype.push
+
+VueRouter.prototype.push = function push(location) {
+ return originalPush.call(this, location).catch(err => err)
+}
 
 const router = new VueRouter({ routes })
 
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title || '慧阅智能阅卷平台'; // 如果路由中设置了标题，则使用设置的标题，否则使用默认标题
+  next();
+});
+
 export default router
-//http://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=dAXQGopA0OkpQjyIeH34DZDp&redirect_uri=www.baidu.com&scope=basic&display=popup
-//http://openapi.baidu.com/oauth/2.0/token?grant_type=authorization_code&code={CODE}&client_id=dAXQGopA0OkpQjyIeH34DZDp&client_secret={CLIENT_SECRET}&redirect_uri=oobc:\Users\Mi\Desktop\个人文档\前后端交互\myapp\Intelligent Grading System\vue2-dynamic-routing\src\router\router-config.js

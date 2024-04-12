@@ -4,7 +4,7 @@
           <header-temp></header-temp>
       </el-header>
       <el-container>
-          <el-aside width="200px"><sidebar class="sidebar-container"></sidebar></el-aside>
+          <!-- <el-aside width="200px"><sidebar class="sidebar-container"></sidebar></el-aside> -->
           <el-main><app-main></app-main></el-main>
       </el-container>
   </el-container>
@@ -19,5 +19,5 @@ export default {
 }
 </script>
 <style>
-.el-header{padding: 0!important;margin-left: 180px;}
+.el-header{padding: 0!important;}
 </style>

@@ -70,7 +70,7 @@ export default {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	background-color: lightblue;
+	background-image: url('../../assets/login-background.png');;
 	justify-content: flex-end;
 	width: 100vw;
 	height: 100vh;
@@ -82,7 +82,7 @@ export default {
 	background-color: #fff;
 	padding: 50px;
 	border-radius: 5px;
-	margin-right: 100px; /* 设置右边距为20px */
+	margin-right: 160px;
 }
 .title {
 	width: 100%;
@@ -92,6 +92,7 @@ export default {
 	margin-bottom: 30px;
 }
 .btn-login {
+	margin-top: 20px;
 	width: 100%;
 	border-color: rgb(0,0,0,0.1);
 }
